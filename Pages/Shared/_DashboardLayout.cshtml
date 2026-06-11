@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewData["Title"] - Dashboard SiPega</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/layout.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/dashboard.css">
+  @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="~/assets/images/logo-ojk.png" alt="Logo OJK" class="sidebar-logo">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        @* — Dashboard (plain link) — *@
+        <li style="display: flex;">
+          <div class="line-active"></div>
+          <a asp-page="/Dashboard/Index" class="sidebar-link">
+            <img src="assets/images/icons/dashboard.svg" alt="">
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        @* — Pelaporan (expandable submenu) — *@
+        <li class="has-submenu" style="margin-left: 4px;">
+          <a href="#" class="sidebar-link" data-toggle="submenu">
+            <img src="assets/images/icons/pelaporan.svg" alt="">
+            <span>Pelaporan</span>
+            <svg class="submenu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <ul class="submenu">
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/pelaporan/self-assessment" class="submenu-link">Input Laporan</a>
+              </div>
+            </li>
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/pelaporan/daftar-laporan" class="submenu-link">Daftar Laporan</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        @* — Deklarasi Pegawai (expandable submenu) — *@
+        <li class="has-submenu" style="margin-left: 4px;">
+          <a href="#" class="sidebar-link" data-toggle="submenu">
+            <img src="assets/images/icons/deklarasi.svg" alt="">
+            <span>Deklarasi Pegawai</span>
+            <svg class="submenu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <ul class="submenu">
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/deklarasi-pegawai/daftar-deklarasi-pegawai" class="submenu-link">Daftar Deklarasi Pegawai</a>
+              </div>
+            </li>
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/deklarasi-pegawai/materi-deklarasi" class="submenu-link">Materi Deklarasi</a>
+              </div>
+            </li>
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/deklarasi-pegawai/pengaturan-periode" class="submenu-link">Pengaturan Periode</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        @* — Informasi (expandable submenu) — *@
+        <li class="has-submenu" style="margin-left: 4px;">
+          <a href="#" class="sidebar-link" data-toggle="submenu">
+            <img src="assets/images/icons/informasi.svg" alt="">
+            <span>Informasi</span>
+            <svg class="submenu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <ul class="submenu">
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/informasi/mekanisme-pelaporan" class="submenu-link">Mekanisme Pelaporan</a>
+              </div>
+            </li>
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/informasi/mekanisme-pemantauan-laporan" class="submenu-link">Mekanisme Pemantauan Laporan</a>
+              </div>
+            </li>
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/informasi/frequently-ask-questions" class="submenu-link">Frequently Ask Questions</a>
+              </div>
+            </li>
+            <li style="margin-left: 32px;">
+              <div class="line-tree">
+                <div class="line-active"></div>
+                <a asp-page="/Dashboard/informasi/peraturan-terkait" class="submenu-link">Peraturan Terkait</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        @* — Daftar Laporan Masuk (plain link) — *@
+        <li style="display: flex;">
+          <div class="line-active"></div>
+          <a asp-page="/Dashboard/daftar-laporan-masuk" class="sidebar-link">
+            <img src="assets/images/icons/daftar-laporan.svg" alt="">
+            <span>Daftar Laporan Masuk</span>
+          </a>
+        </li>
+
+        @* — Monitoring Laporan (plain link) — *@
+        <li style="display: flex;">
+          <div class="line-active"></div>
+          <a asp-page="/Dashboard/monitoring-laporan" class="sidebar-link">
+            <img src="assets/images/icons/monitoring.svg" alt="">
+            <span>Monitoring Laporan</span>
+          </a>
+        </li>
+
+        @* — Administrasi (plain link) — *@
+        <li class="has-submenu" style="margin-left: 4px;">
+          <a href="#" class="sidebar-link" data-toggle="submenu">
+            <img src="assets/images/icons/administrasi.svg" alt="">
+            <span>Administrasi</span>
+            <svg class="submenu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <ul class="submenu">
+            <li class="has-submenu" style="margin-left: 4px;">
+              <a href="#" class="sidebar-link" data-toggle="sub-submenu">
+                <span>Master</span>
+                <svg class="submenu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <ul class="sub-submenu">
+                <li style="margin-left: 32px;">
+                  <div class="line-tree">
+                    <div class="line-active"></div>
+                    <a asp-page="/Dashboard/administrasi/master" class="submenu-link">Menu Systems</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="has-submenu" style="margin-left: 4px;">
+              <a href="#" class="sidebar-link" data-toggle="sub-submenu">
+                <span>Front End</span>
+                <svg class="submenu-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <ul class="sub-submenu">
+                <li style="margin-left: 32px;">
+                  <div class="line-tree">
+                    <div class="line-active"></div>
+                    <a asp-page="/Dashboard/administrasi/master" class="submenu-link">Menu Aplikasi</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="title-footer">
+        <h1>Ada Masalah Terkait Gratifikasi?</h1>
+        <p>Tanya DPIK Saja</p>
+      </div>
+      <div class="btn-support">
+        <button class="btn-primary">Hubungi Kami</button>
+        <button class="btn-secondary">Pelajari Selengkapnya</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main Area -->
+  <div class="dash-main">
+    <!-- Top Navbar -->
+    <header class="dash-navbar">
+      <button class="dash-menu-btn" id="menuBtn" aria-label="Open menu">
+        &#9776;
+      </button>
+      <div class="dash-navbar-left">
+        <h2 class="dash-page-title">@ViewData["Title"]</h2>
+        <p id="breadcrumb" style="color: rgba(0, 0, 0, .8);"></p>
+      </div>
+      <div class="dash-navbar-right">
+        <img class="dash-profile" src="assets/images/profile.png" alt="">
+        <div class="name-role">
+          <h1 class="dash-user">Miftakhul Rizky</h1>
+          <p class="dash-role">Super Administrator</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="dash-content">
+      @RenderBody()
+    </main>
+  </div>
+
+  <script src="~/js/app.js"></script>
+  <script src="~/js/dashboard.js"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

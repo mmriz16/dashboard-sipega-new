@@ -1,0 +1,99 @@
+.login {
+    display: flex;
+    gap: 100px;
+    height: 100vh;
+    padding: 0 100px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-image: url('/assets/images/hero-image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Break out of container — full viewport */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+.login::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background: rgba(0, 0, 0, 0.55); */
+    background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 100%);
+    z-index: 0;
+}
+
+.login > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* News */
+.news {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 640px;
+    gap: 8px;
+}
+
+.news h1{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.news p{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Login Card */
+.card-login {
+    background-color: #fff;
+    border-top: 6px solid #cc0000;
+    padding: 24px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.card-login h1{
+    font-size: 20px;
+}
+
+.card-login p{
+    font-size: 16px;
+}
+
+.card-login form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+}
+
+.card-login input{
+    padding: 14px 16px;
+    border: 1px solid #E6E6E6;
+}
+
+.card-login .form{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-login .btn{
+    background-color: #cc0000;
+    color: #fff;
+}

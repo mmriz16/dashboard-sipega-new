@@ -1,0 +1,105 @@
+@page "/self-assessment"
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Self Assessment";
+}
+
+<div class="page-header">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 8px;">
+        <div class="card">
+        <h1 class="chart-title">Data Pribadi</h1>
+        <form class="form-dashboard">
+            <div class="row-form">
+                <div class="form-group">
+                    <label for="nama_bentuk_gratifikasi">Nama Bentuk Gratifikasi<span style="color: #cc0000;">*</span></label>
+                    <input type="text" id="nama_bentuk_gratifikasi" name="nama_bentuk_gratifikasi" placeholder="e.g. Pemberian Botol Minum">
+                </div>
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Berkaitan dengan Jabatan & Bertentangan dengan Tugas<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Ya atau Tidak</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row-form">
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Pemberi<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Pemberi</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Kegiatan Pemberian<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Kegiatan Pemberian</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Bentuk Gratifikasi<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Bentuk Gratifikasi</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row-form">
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Pemberlakuan<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Pemberlakuan</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Label Instansi<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Label Instansi</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row-form">
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Nominal<span style="color: #cc0000;">*</span></label>
+                    <input type="number" id="nama_bentuk_gratifikasi" name="nama_bentuk_gratifikasi" placeholder="e.g. 100000">
+                </div>
+                <div class="form-group">
+                    <label for="jabatan_bertentangan">Kondisi<span style="color: #cc0000;">*</span></label>
+                    <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                        <option value="" disabled selected hidden>Pilih Kondisi</option>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="button-group">
+        <button type="button" class="btn-secondary" onclick="openModal('assessmentModal')">Hitung</button>
+        <a href="/input-laporan" class="btn-primary">Lewati</a>
+    </div>
+    </div>
+</div>
+
+<modal id="assessmentModal" title="Hasil Perhitungan Self-Assessment" size="medium" show-close="true">
+    <div class="modal-content-center">
+        <img class="modal-ojk-logo" src="~/assets/images/logo-ojk.png" alt="Logo OJK">
+        <div class="modal-result-box">
+            <span class="modal-result-text">Wajib Lapor</span>
+        </div>
+        <p class="modal-desc-text">Jika Anda ragu, silakan lapor pada menu input laporan.</p>
+        <div class="modal-actions-pill">
+            <button type="button" class="btn-pill-dark" onclick="closeModal('assessmentModal')">Batal</button>
+            <a asp-page="/input-laporan" class="btn-pill-danger">Lapor Sekarang</a>
+        </div>
+    </div>
+</modal>

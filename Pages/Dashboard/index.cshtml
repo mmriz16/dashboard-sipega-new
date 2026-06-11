@@ -1,0 +1,289 @@
+@page "/dashboard"
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="page-header">
+  <div class="dash-body-content">
+
+    <!-- Announcement -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 class="chart-title">Pengumuman</h1>
+        <p style="font-size: 14px; color: #666;">Tutup</p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-direction: column;">
+        <ul class="announcement">
+          <li><span style="font-weight: 600;">Pihak Internal OJK dilarang menerima/memberi Gratifikasi</span> secara langsung atau tidak langsung dari/kepada sesama pihak internal OJK dan/atau Pemangku Kepentingan <span style="font-weight: 600;">yang berhubungan dengan jabatan dan/atau kewenangan dan berlawanan dengan kewajiban atau tugas Pihak Internal OJK</span></li>
+          <li>Pihak Internal OJK <span style="font-weight: 600;">wajib menolak penerimaan dan pemberian Gratifikasi yang tidak sesuai dengan ketentuan</span> yang diatur dalam peraturan Dewan Komisioner Otoritas Jasa Keuangan tentang Pengendalian Gratifikasi di OJK.*</li>
+          <li><span style="font-weight: 600;">Pihak Internal OJK wajib melaporkan kepada</span> Departemen penegakan Integritas dan Audit Khusus (DPIK) selaku <span style="font-weight: 600;">Unit Pengendalian Gratifikasi (UPG) OJK</span> untuk penerimaan dan/atau penolakan Gratifikasi yang diatur dalam Peraturan Dewan Komisioner Otoritas Jasa Keuangan tentang Pengendalian Gratifikasi di OJK.*</li>
+        </ul>
+        <p>*Sesuai Peraturan Dewan Komisioner Nomor 2/DPK.09/2024 tentang Pengendalian Gratifikasi di Otoritas Jasa Keuangan dan Peraturan Komisi Pemberantasan Korupsi Republik Indonesia Nomor 2 Tahun 2019 tanggal 5 November 2019 tentang Pelaporan Gratifikasi</p>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <form class="row-form">
+      <div class="form-group">
+        <label for="periode">Periode<span style="color: #cc0000;">*</span></label>
+        <input type="date" id="tgl_penerimaan" name="tgl_penerimaan" placeholder="Masukkan periode">
+      </div>
+      <div class="form-group">
+        <label for="periode">Status Laporan<span style="color: #cc0000;">*</span></label>
+        <select id="status_laporan" name="status_laporan" required>
+          <option value="" disabled selected hidden>Pilih Status Laporan</option>
+          <option value="1">Penerimaan</option>
+          <option value="2">Penolakan</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="periode">Kategori Gratifikasi<span style="color: #cc0000;">*</span></label>
+        <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+          <option value="" disabled selected hidden>Pilih Kategori Gratifikasi</option>
+          <option value="1">Penerimaan</option>
+          <option value="2">Penolakan</option>
+        </select>
+      </div>
+    </form>
+
+    <!-- Badge Pill -->
+    <div class="badge-pill">
+      <p class="badge-pill-item active">Total Laporan Pejabat</p>
+      <p class="badge-pill-item">Total Nominal per Jenis</p>
+      <p class="badge-pill-item">Laporan per Bidang</p>
+      <p class="badge-pill-item">Total Penerimaan per Jenis</p>
+      <p class="badge-pill-item">Laporan per Satker</p>
+      <p class="badge-pill-item">Laporan per Jenis Pemberi</p>
+      <p class="badge-pill-item">Laporan per Hubungan Pemberi</p>
+      <p class="badge-pill-item">Laporan per Kode Gratifikasi</p>
+      <p class="badge-pill-item">Analisis Barang Gratifikasi</p>
+      <p class="badge-pill-item">Penerimaan per Level Jabatan</p>
+      <p class="badge-pill-item">Gratifikasi per Bidang OJK</p>
+      <p class="badge-pill-item">Laporan per Jenis Gratifikasi</p>
+      <p class="badge-pill-item">Laporan per Bentuk Gratifikasi</p>
+    </div>
+
+    <!-- Chart -->
+    <div class="card">
+      <h1 class="chart-title">Total Pelaporan Berdasarkan Pejabat</h1>
+      <form class="row-form">
+        <div class="form-group">
+          <label for="tgl_penerimaan">Start Periode<span style="color: #cc0000;">*</span></label>
+          <input type="date" id="tgl_penerimaan" name="tgl_penerimaan" placeholder="Masukkan periode">
+        </div>
+        <div class="form-group">
+          <label for="tgl_penerimaan">End Periode<span style="color: #cc0000;">*</span></label>
+          <input type="date" id="tgl_penerimaan" name="tgl_penerimaan" placeholder="Masukkan periode">
+        </div>
+      </form>
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center;s">
+        <h1 class="chart-title">Daftar Laporan yang Telah Dikirimkan</h1>
+        <button class="btn-primary" style="width: fit-content;">Hapus Data Terpilih</button>
+      </div>
+      <table style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+        <thead>
+          <tr>
+            <th style="width: fit-content;">
+              <label class="checkbox-container">
+                <input type="checkbox" id="select-all" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+            </th>
+            <th>Nama Pelapor</th>
+            <th>NIP</th>
+            <th>Tanggal Kirim</th>
+            <th>Kategori</th>
+            <th style="text-align: center;">Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="draft">Draft</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="rejected">Ditolak</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="verified">Diverifikasi</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="progress">Dalam Proses</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="draft">Draft</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="rejected">Ditolak</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="verified">Diverifikasi</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="progress">Dalam Proses</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="verified">Diverifikasi</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+        <tbody>
+          <td>
+            <label class="checkbox-container">
+                <input type="checkbox" id="select-all">
+                <span class="checkmark"></span>
+              </label>
+          </td>
+          <td>Adi Nugroho</td>
+          <td>(239) 555-0108</td>
+          <td>Jan 01, 2026</td>
+          <td>Penerimaan Gratifikasi</td>
+          <td class="badge-pill" style="justify-content: center;">
+            <p class="progress">Dalam Proses</p>
+          </td>
+          <td style="text-align: center;">1</td>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <p class="page-info">Showing 1-4 of 4 entries</p>
+        <div>
+          <button class="page-number">1</button>
+          <button class="page-number">2</button>
+          <button class="page-number">···</button>
+          <button class="page-number">8</button>
+          <button class="page-number active">9</button>
+          <button class="page-number">10</button>
+        </div>
+        <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
+          <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+          <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+            <option value="0">10</option>
+            <option value="1">50</option>
+            <option value="2">100</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

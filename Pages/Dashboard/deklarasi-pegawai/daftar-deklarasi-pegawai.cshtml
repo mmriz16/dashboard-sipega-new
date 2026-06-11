@@ -1,0 +1,167 @@
+@page "/daftar-deklarasi-pegawai"
+@using DashboardSipega.Models
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Daftar Deklarasi Pegawai";
+
+    var tableData = new TableViewModel
+    {
+        Headers = new List<string> { "Nama", "NIP", "Satuan Kerja", "Unit Kerja", "Tanggal Pengisian", "Status", "" },
+        Rows = new List<List<TableCell>>
+        {
+            new List<TableCell> {
+                new TableCell { Text = "Joko" },
+                new TableCell { Text = "198901012015011002" },
+                new TableCell { Text = "Departemen Pengawasan Perbankan" },
+                new TableCell { Text = "Grup Pengawasan Spesialis" },
+                new TableCell { Text = "Jan 01, 2026" },
+                new TableCell { Type = "badge", Text = "Sudah Diisi", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Siti Aminah" },
+                new TableCell { Text = "199203152018032001" },
+                new TableCell { Text = "Deputi Komisioner Hubungan Masyarakat dan Logistik" },
+                new TableCell { Text = "Grup Komunikasi Publik" },
+                new TableCell { Text = "-" },
+                new TableCell { Type = "badge", Text = "Belum Diisi", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Budi Santoso" },
+                new TableCell { Text = "198507242009121003" },
+                new TableCell { Text = "Departemen Audit Intern" },
+                new TableCell { Text = "Grup Audit Teknologi Informasi" },
+                new TableCell { Text = "Jan 15, 2026" },
+                new TableCell { Type = "badge", Text = "Sudah Diisi", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Dewi Lestari" },
+                new TableCell { Text = "199511302020012004" },
+                new TableCell { Text = "Departemen Hukum" },
+                new TableCell { Text = "Grup Advokasi Hukum" },
+                new TableCell { Text = "-" },
+                new TableCell { Type = "badge", Text = "Belum Diisi", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Eko Prasetyo" },
+                new TableCell { Text = "198812052014021001" },
+                new TableCell { Text = "Departemen Pengawasan IKNB" },
+                new TableCell { Text = "Grup Pengawasan Asuransi" },
+                new TableCell { Text = "Feb 02, 2026" },
+                new TableCell { Type = "badge", Text = "Sudah Diisi", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Feri Irawan" },
+                new TableCell { Text = "199008182017041002" },
+                new TableCell { Text = "Departemen Sumber Daya Manusia" },
+                new TableCell { Text = "Grup Hubungan Industrial" },
+                new TableCell { Text = "-" },
+                new TableCell { Type = "badge", Text = "Belum Diisi", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Gita Gutawa" },
+                new TableCell { Text = "199304252019032002" },
+                new TableCell { Text = "Departemen Pengawasan Pasar Modal" },
+                new TableCell { Text = "Grup Pengawasan Emiten" },
+                new TableCell { Text = "Feb 18, 2026" },
+                new TableCell { Type = "badge", Text = "Sudah Diisi", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Hendra Wijaya" },
+                new TableCell { Text = "198402112008011005" },
+                new TableCell { Text = "Departemen Sistem Informasi" },
+                new TableCell { Text = "Grup Keamanan Informasi" },
+                new TableCell { Text = "-" },
+                new TableCell { Type = "badge", Text = "Belum Diisi", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Indah Permata" },
+                new TableCell { Text = "199605022022032003" },
+                new TableCell { Text = "Departemen Perlindungan Konsumen" },
+                new TableCell { Text = "Grup Edukasi Keuangan" },
+                new TableCell { Text = "Mar 12, 2026" },
+                new TableCell { Type = "badge", Text = "Sudah Diisi", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Kevin Sanjaya" },
+                new TableCell { Text = "199109092015031002" },
+                new TableCell { Text = "Departemen Logistik" },
+                new TableCell { Text = "Grup Manajemen Aset" },
+                new TableCell { Text = "-" },
+                new TableCell { Type = "badge", Text = "Belum Diisi", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            }
+        }
+    };
+}
+
+<div class="page-header">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 8px;">
+        <div class="row-form">
+            <div class="form-group">
+                <label for="periode_laporan">Periode Laporan<span style="color: #cc0000;">*</span></label>
+                <input type="date" id="periode_laporan" name="periode_laporan">
+            </div>
+            <div class="form-group">
+                <label for="periode_pengisian">Periode Pengisian<span style="color: #cc0000;">*</span></label>
+                <input type="date" id="periode_pengisian" name="periode_pengisian">
+            </div>
+            <div class="form-group">
+                <label for="jabatan_bertentangan">Satuan Kerja<span style="color: #cc0000;">*</span></label>
+                <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                    <option value="" disabled selected hidden>Pilih Status</option>
+                    <option value="1">Ya</option>
+                    <option value="0">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="jabatan_bertentangan">Unit Kerja<span style="color: #cc0000;">*</span></label>
+                <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                    <option value="" disabled selected hidden>Pilih Status</option>
+                    <option value="1">Ya</option>
+                    <option value="0">Tidak</option>
+                </select>
+            </div>
+        </div>
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;s">
+                <h1 class="chart-title">Daftar Deklarasi Pegawai</h1>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-primary" style="width: fit-content;">Hapus Data Terpilih</button>
+                    <button class="btn-secondary" style="width: fit-content;">Export as Excel</button>
+                </div>
+            </div>
+            <!-- Table -->
+            <partial name="_TableLaporan" model="tableData" />
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <p class="page-info">Showing 1-4 of 4 entries</p>
+                <div>
+                <button class="page-number">1</button>
+                <button class="page-number">2</button>
+                <button class="page-number">···</button>
+                <button class="page-number">8</button>
+                <button class="page-number active">9</button>
+                <button class="page-number">10</button>
+                </div>
+                <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
+                <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+                <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+                    <option value="0">10</option>
+                    <option value="1">50</option>
+                    <option value="2">100</option>
+                </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

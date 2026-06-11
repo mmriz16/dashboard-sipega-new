@@ -1,0 +1,228 @@
+@page "/daftar-laporan-masuk"
+@using DashboardSipega.Models
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Daftar Laporan Masuk";
+
+    var tableData = new TableViewModel
+    {
+        Headers = new List<string> { "Report ID", "NIP", "Nama Pelapor", "Tanggal Kirim", "Kategori", "Sifat", "Status", "Hasil Analisis Laporan Gratifikasi", "Status SK Gratifikasi", "Nama Pemberi", "Penerimaan", "Lampiran", "Pesan/Rekomendasi", "" },
+        Rows = new List<List<TableCell>>
+        {
+            new List<TableCell> {
+                new TableCell { Text = "RPT-001" },
+                new TableCell { Text = "198901012015011002" },
+                new TableCell { Text = "Joko" },
+                new TableCell { Text = "Jan 01, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Kedinasan" },
+                new TableCell { Type = "badge", Text = "Draft", BadgeClass = "draft" },
+                new TableCell { Text = "Laporan Lengkap" },
+                new TableCell { Text = "Menunggu SK" },
+                new TableCell { Text = "PT Sinar Mas" },
+                new TableCell { Text = "Parsel Makanan & Mug" },
+                new TableCell { Text = "parsel.png" },
+                new TableCell { Text = "Segera verifikasi berkas" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-002" },
+                new TableCell { Text = "199203152018032001" },
+                new TableCell { Text = "Siti Aminah" },
+                new TableCell { Text = "Jan 10, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Pribadi" },
+                new TableCell { Type = "badge", Text = "Ditolak", BadgeClass = "rejected" },
+                new TableCell { Text = "Bukti Kurang Jelas" },
+                new TableCell { Text = "Tidak Diterbitkan" },
+                new TableCell { Text = "Budi Setiawan" },
+                new TableCell { Text = "Uang Tunai Rp 500.000" },
+                new TableCell { Text = "kwitansi.jpg" },
+                new TableCell { Text = "Hubungi pelapor untuk klarifikasi" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-003" },
+                new TableCell { Text = "198507242009121003" },
+                new TableCell { Text = "Budi Santoso" },
+                new TableCell { Text = "Jan 15, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Kedinasan" },
+                new TableCell { Type = "badge", Text = "Diverifikasi", BadgeClass = "verified" },
+                new TableCell { Text = "Laporan Valid" },
+                new TableCell { Text = "SK Terbit" },
+                new TableCell { Text = "CV Maju Jaya" },
+                new TableCell { Text = "Voucher Belanja Rp 1.000.000" },
+                new TableCell { Text = "voucher.pdf" },
+                new TableCell { Text = "Laporan telah diarsipkan" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-004" },
+                new TableCell { Text = "199511302020012004" },
+                new TableCell { Text = "Dewi Lestari" },
+                new TableCell { Text = "Jan 22, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Sosial" },
+                new TableCell { Type = "badge", Text = "Dalam Proses", BadgeClass = "progress" },
+                new TableCell { Text = "Sedang Ditinjau" },
+                new TableCell { Text = "Proses Penandatanganan" },
+                new TableCell { Text = "Yayasan Peduli" },
+                new TableCell { Text = "Plakat Penghargaan & Bingkisan" },
+                new TableCell { Text = "plakat.jpg" },
+                new TableCell { Text = "Menunggu keputusan pimpinan" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-005" },
+                new TableCell { Text = "198812052014021001" },
+                new TableCell { Text = "Eko Prasetyo" },
+                new TableCell { Text = "Feb 02, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Kedinasan" },
+                new TableCell { Type = "badge", Text = "Draft", BadgeClass = "draft" },
+                new TableCell { Text = "Belum Dianalisis" },
+                new TableCell { Text = "Menunggu SK" },
+                new TableCell { Text = "Rian Hidayat" },
+                new TableCell { Text = "Oleh-oleh Khas Daerah" },
+                new TableCell { Text = "tidak ada" },
+                new TableCell { Text = "Lengkapi lampiran foto barang" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-006" },
+                new TableCell { Text = "199008182017041002" },
+                new TableCell { Text = "Feri Irawan" },
+                new TableCell { Text = "Feb 10, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Pribadi" },
+                new TableCell { Type = "badge", Text = "Ditolak", BadgeClass = "rejected" },
+                new TableCell { Text = "Kategori Bukan Gratifikasi" },
+                new TableCell { Text = "Tidak Diterbitkan" },
+                new TableCell { Text = "PT Tech Solusi" },
+                new TableCell { Text = "Jam Tangan Pintar" },
+                new TableCell { Text = "smartwatch.png" },
+                new TableCell { Text = "Kembalikan kepada pemberi" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-007" },
+                new TableCell { Text = "199304252019032002" },
+                new TableCell { Text = "Gita Gutawa" },
+                new TableCell { Text = "Feb 18, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Kedinasan" },
+                new TableCell { Type = "badge", Text = "Diverifikasi", BadgeClass = "verified" },
+                new TableCell { Text = "Laporan Disetujui" },
+                new TableCell { Text = "SK Terbit" },
+                new TableCell { Text = "Bank Mandiri" },
+                new TableCell { Text = "Kalender & Agenda Kerja" },
+                new TableCell { Text = "agenda.jpg" },
+                new TableCell { Text = "Barang menjadi milik instansi" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-008" },
+                new TableCell { Text = "198402112008011005" },
+                new TableCell { Text = "Hendra Wijaya" },
+                new TableCell { Text = "Mar 01, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Kedinasan" },
+                new TableCell { Type = "badge", Text = "Dalam Proses", BadgeClass = "progress" },
+                new TableCell { Text = "Klarifikasi Tambahan" },
+                new TableCell { Text = "Menunggu SK" },
+                new TableCell { Text = "PT Pembangunan" },
+                new TableCell { Text = "Tiket Seminar & Akomodasi" },
+                new TableCell { Text = "tiket.pdf" },
+                new TableCell { Text = "Koordinasikan dengan pihak panitia" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-009" },
+                new TableCell { Text = "199605022022032003" },
+                new TableCell { Text = "Indah Permata" },
+                new TableCell { Text = "Mar 12, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Sosial" },
+                new TableCell { Type = "badge", Text = "Diverifikasi", BadgeClass = "verified" },
+                new TableCell { Text = "Laporan Bersih" },
+                new TableCell { Text = "SK Terbit" },
+                new TableCell { Text = "Warga Sekitar" },
+                new TableCell { Text = "Bingkisan Hari Raya" },
+                new TableCell { Text = "bingkisan.jpg" },
+                new TableCell { Text = "Salurkan sebagai bantuan sosial" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "RPT-010" },
+                new TableCell { Text = "199109092015031002" },
+                new TableCell { Text = "Kevin Sanjaya" },
+                new TableCell { Text = "Mar 20, 2026" },
+                new TableCell { Text = "Penerimaan Gratifikasi" },
+                new TableCell { Text = "Pribadi" },
+                new TableCell { Type = "badge", Text = "Dalam Proses", BadgeClass = "progress" },
+                new TableCell { Text = "Evaluasi Nilai Barang" },
+                new TableCell { Text = "Menunggu SK" },
+                new TableCell { Text = "PT Logistik Indo" },
+                new TableCell { Text = "Pen Berlogo Emas" },
+                new TableCell { Text = "pen.jpg" },
+                new TableCell { Text = "Nilai barang di bawah batas minimum" },
+                new TableCell { Type = "action", Text = "1" }
+            }
+        }
+    };
+}
+
+<div class="page-header">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 8px;">
+        <div class="row-form">
+            <div class="form-group">
+                <label for="nama_bentuk_gratifikasi">Cari Data<span style="color: #cc0000;">*</span></label>
+                <input type="text" id="nama_bentuk_gratifikasi" name="nama_bentuk_gratifikasi" placeholder="e.g. Pelapor, Pemberi, Penerimaan, Lampiran">
+            </div>
+            <div class="form-group">
+                <label for="jabatan_bertentangan">Status<span style="color: #cc0000;">*</span></label>
+                <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                    <option value="" disabled selected hidden>Pilih Status</option>
+                    <option value="1">Ya</option>
+                    <option value="0">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nama_bentuk_gratifikasi">Tanggal<span style="color: #cc0000;">*</span></label>
+                <input type="date" id="nama_bentuk_gratifikasi" name="nama_bentuk_gratifikasi" placeholder="e.g. Pemberian Botol Minum">
+            </div>
+            <button class="btn-primary" style="align-self: flex-end; width: fit-content; height: 46px;">Download</button>
+        </div>
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;s">
+                <h1 class="chart-title">Daftar Laporan yang Telah Dikirimkan</h1>
+                <button class="btn-secondary" style="width: fit-content;">Approve Penerimaan Barang Terpilih</button>
+            </div>
+            <!-- Table -->
+            <partial name="_TableLaporan" model="tableData" />
+
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <p class="page-info">Showing 1-4 of 4 entries</p>
+                <div>
+                <button class="page-number">1</button>
+                <button class="page-number">2</button>
+                <button class="page-number">···</button>
+                <button class="page-number">8</button>
+                <button class="page-number active">9</button>
+                <button class="page-number">10</button>
+                </div>
+                <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
+                <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+                <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+                    <option value="0">10</option>
+                    <option value="1">50</option>
+                    <option value="2">100</option>
+                </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
