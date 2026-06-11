@@ -90,13 +90,16 @@
     </div>
 </div>
 
-<modal id="assessmentModal" title="Hasil Perhitungan Self-Assessment" size="medium" show-close="true">
+<modal id="assessmentModal" show-header="false">
     <div class="modal-content-center">
         <img class="modal-ojk-logo" src="~/assets/images/logo-ojk.png" alt="Logo OJK">
-        <div class="modal-result-box">
-            <span class="modal-result-text">Wajib Lapor</span>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px;">
+            <h1 class="modal-title">Hasil Perhitungan Self-Assessment</h1>
+            <div class="modal-result-box">
+                <span class="modal-result-text">Wajib Lapor</span>
+            </div>
+            <p class="modal-desc-text">Jika Anda ragu, silakan lapor pada menu input laporan.</p>
         </div>
-        <p class="modal-desc-text">Jika Anda ragu, silakan lapor pada menu input laporan.</p>
         <div class="modal-actions-pill">
             <button type="button" class="btn-pill-dark" onclick="closeModal('assessmentModal')">Batal</button>
             <a asp-page="/input-laporan" class="btn-pill-danger">Lapor Sekarang</a>

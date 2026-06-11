@@ -9,7 +9,8 @@
         Headers = new List<string> { "Nama Pelapor", "NIP", "Tanggal Kirim", "Kategori", "Sifat", "Status", "Hasil Analisis Laporan Gratifikasi", "Status SK Gratifikasi", "Nama Pemberi", "Penerimaan", "Lampiran", "Pesan/Rekomendasi", "" },
         Rows = new List<List<TableCell>>
         {
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Joko" },
                 new TableCell { Text = "198901012015011002" },
                 new TableCell { Text = "Jan 01, 2026" },
@@ -24,7 +25,8 @@
                 new TableCell { Text = "Segera verifikasi berkas" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Siti Aminah" },
                 new TableCell { Text = "199203152018032001" },
                 new TableCell { Text = "Jan 10, 2026" },
@@ -39,7 +41,8 @@
                 new TableCell { Text = "Hubungi pelapor untuk klarifikasi" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Budi Santoso" },
                 new TableCell { Text = "198507242009121003" },
                 new TableCell { Text = "Jan 15, 2026" },
@@ -54,7 +57,8 @@
                 new TableCell { Text = "Laporan telah diarsipkan" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Dewi Lestari" },
                 new TableCell { Text = "199511302020012004" },
                 new TableCell { Text = "Jan 22, 2026" },
@@ -69,7 +73,8 @@
                 new TableCell { Text = "Menunggu keputusan pimpinan" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Eko Prasetyo" },
                 new TableCell { Text = "198812052014021001" },
                 new TableCell { Text = "Feb 02, 2026" },
@@ -84,7 +89,8 @@
                 new TableCell { Text = "Lengkapi lampiran foto barang" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Feri Irawan" },
                 new TableCell { Text = "199008182017041002" },
                 new TableCell { Text = "Feb 10, 2026" },
@@ -99,7 +105,8 @@
                 new TableCell { Text = "Kembalikan kepada pemberi" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Gita Gutawa" },
                 new TableCell { Text = "199304252019032002" },
                 new TableCell { Text = "Feb 18, 2026" },
@@ -114,7 +121,8 @@
                 new TableCell { Text = "Barang menjadi milik instansi" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Hendra Wijaya" },
                 new TableCell { Text = "198402112008011005" },
                 new TableCell { Text = "Mar 01, 2026" },
@@ -129,7 +137,8 @@
                 new TableCell { Text = "Koordinasikan dengan pihak panitia" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Indah Permata" },
                 new TableCell { Text = "199605022022032003" },
                 new TableCell { Text = "Mar 12, 2026" },
@@ -144,7 +153,8 @@
                 new TableCell { Text = "Salurkan sebagai bantuan sosial" },
                 new TableCell { Type = "action", Text = "1" }
             },
-            new List<TableCell> {
+            new List<TableCell>
+            {
                 new TableCell { Text = "Kevin Sanjaya" },
                 new TableCell { Text = "199109092015031002" },
                 new TableCell { Text = "Mar 20, 2026" },
@@ -186,34 +196,47 @@
         <div class="card">
             <div style="display: flex; justify-content: space-between; align-items: center;s">
                 <h1 class="chart-title">Daftar Laporan</h1>
-                <button class="btn-primary" style="width: fit-content;">Hapus Data Terpilih</button>
+                <button class="btn-primary" style="width: fit-content;" onclick="openModal('assessmentModal')">Hapus Data Terpilih</button>
             </div>
 
             <!-- Table -->
-            <partial name="_TableLaporan" model="tableData" />
+            <partial name="_TableLaporan" model="tableData"/>
 
 
             <!-- Pagination -->
             <div class="pagination">
                 <p class="page-info">Showing 1-4 of 4 entries</p>
                 <div>
-                <button class="page-number">1</button>
-                <button class="page-number">2</button>
-                <button class="page-number">···</button>
-                <button class="page-number">8</button>
-                <button class="page-number active">9</button>
-                <button class="page-number">10</button>
+                    <button class="page-number">1</button>
+                    <button class="page-number">2</button>
+                    <button class="page-number">···</button>
+                    <button class="page-number">8</button>
+                    <button class="page-number active">9</button>
+                    <button class="page-number">10</button>
                 </div>
                 <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
-                <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
-                <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
-                    <option value="0">10</option>
-                    <option value="1">50</option>
-                    <option value="2">100</option>
-                </select>
+                    <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+                    <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+                        <option value="0">10</option>
+                        <option value="1">50</option>
+                        <option value="2">100</option>
+                    </select>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
+<modal id="assessmentModal" show-header="false">
+    <div class="modal-content-center">
+        <img class="modal-ojk-logo" src="~/assets/images/logo-ojk.png" alt="Logo OJK">
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <h1 class="modal-title">Apakah Anda Yakin ingin Menghapus?</h1>
+            <p class="modal-desc-text">Data yang akan dihapus tidak dapat dikembalikan.</p>
+        </div>
+        <div class="modal-actions-pill">
+            <button type="button" class="btn-pill-dark" onclick="closeModal('assessmentModal')">Batal</button>
+            <a asp-page="/input-laporan" class="btn-pill-danger">Hapus</a>
+        </div>
+    </div>
+</modal>

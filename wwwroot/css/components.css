@@ -362,12 +362,14 @@
 }
 
 .btn-primary {
+  text-align: center;
   cursor: pointer;
   color: #fff;
   background-color: var(--color-primary);
   padding: 12px 16px;
-  font-weight: 700;
+  font-weight: 400;
   border: 0px;
+  font-size: 14px;
   width: stretch;
 }
 
@@ -380,8 +382,9 @@
   color: #fff;
   background-color: #000;
   padding: 12px 16px;
-  font-weight: 700;
+  font-weight: 400;
   border: 0px;
+  font-size: 14px;
   width: stretch;
 }
 
@@ -638,6 +641,11 @@ td {
   color: #cc0000;
 }
 
+.modal-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .modal-body {
   padding: 24px;
 }
@@ -676,7 +684,7 @@ td {
 }
 
 .modal-desc-text {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.5;
 }
@@ -720,4 +728,79 @@ td {
 
 .btn-pill-danger:hover {
   background-color: #b30000;
+}
+
+/* --- Toast Notification Container --- */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+/* --- Toast Item --- */
+.toast-alert {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  min-width: 252px;
+  max-width: 400px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.toast-alert.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.toast-message {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: var(--text-sm, 14px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* --- Toast Variants --- */
+.toast-success {
+  background-color: #e8f7f0; /* Soft pastel green matching Figma design */
+  border: 1px solid var(--color-success-border, rgba(1, 115, 44, 0.3));
+}
+
+.toast-success .toast-icon {
+  color: var(--color-success, #01732C);
+  flex-shrink: 0;
+}
+
+.toast-success .toast-message {
+  color: var(--color-success, #01732C);
+}
+
+.toast-error {
+  background-color: #fdf2f2;
+  border: 1px solid rgba(204, 0, 0, 0.2);
+}
+
+.toast-error .toast-icon {
+  color: var(--color-danger, #CC0000);
+  flex-shrink: 0;
+}
+
+.toast-error .toast-message {
+  color: var(--color-danger, #CC0000);
 }

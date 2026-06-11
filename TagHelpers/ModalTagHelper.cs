@@ -10,6 +10,7 @@ namespace DashboardSipega.TagHelpers
         public string Title { get; set; } = "";
         public string Size { get; set; } = "medium";
         public bool ShowClose { get; set; } = true;
+        public bool ShowHeader { get; set; } = true;
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
@@ -22,12 +23,16 @@ namespace DashboardSipega.TagHelpers
                 ? $@"<button type=""button"" class=""modal-close"" onclick=""closeModal('{Id}')"" aria-label=""Close"">&times;</button>"
                 : "";
 
-            output.Content.SetHtmlContent($@"
-                <div class=""modal-container modal-{Size}"">
-                    <div class=""modal-header"">
+            string headerHtml = ShowHeader
+                ? $@"<div class=""modal-header"">
                         <h3>{Title}</h3>
                         {closeButtonHtml}
-                    </div>
+                    </div>"
+                : "";
+
+            output.Content.SetHtmlContent($@"
+                <div class=""modal-container modal-{Size}"">
+                    {headerHtml}
                     <div class=""modal-body"">
                         {childContent.GetContent()}
                     </div>

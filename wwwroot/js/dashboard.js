@@ -80,6 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper: cocokin path
   function matchPath(linkHref) {
     var href = linkHref.replace(/\/$/, "").toLowerCase();
+    
+    // /input-laporan is part of the same flow as /self-assessment
+    if (currentPath === "/input-laporan" && href === "/self-assessment") {
+      return true;
+    }
+    
     return currentPath === href;
   }
 

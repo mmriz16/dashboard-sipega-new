@@ -276,8 +276,21 @@
         </div>
         
         <div class="button-group">
-            <button type="button" class="btn-secondary" onclick="openModal('assessmentModal')">Hitung</button>
-            <button class="btn-primary">Lewati</button>
+            <button type="button" class="btn-primary" onclick="showToast('Data berhasil disimpan')">Simpan</button>
         </div>
     </div>
 </div>
+
+<modal id="assessmentModal" title="Hasil Perhitungan Self-Assessment" size="medium" show-close="true">
+    <div class="modal-content-center">
+        <img class="modal-ojk-logo" src="~/assets/images/logo-ojk.png" alt="Logo OJK">
+        <div class="modal-result-box">
+            <span class="modal-result-text">Wajib Lapor</span>
+        </div>
+        <p class="modal-desc-text">Jika Anda ragu, silakan lapor pada menu input laporan.</p>
+        <div class="modal-actions-pill">
+            <button type="button" class="btn-pill-dark" onclick="closeModal('assessmentModal')">Batal</button>
+            <a asp-page="/input-laporan" class="btn-pill-danger">Lapor Sekarang</a>
+        </div>
+    </div>
+</modal>
