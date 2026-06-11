@@ -1,0 +1,170 @@
+@page "/menu-sistem"
+@using DashboardSipega.Models
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Menu Sistem";
+
+    var tableData = new TableViewModel
+    {
+        Headers = new List<string> { "No", "MenuID", "No Urut", "Nama", "Url", "ParentID", "Menu Level", "Icon", "Active", "URl Targeted" },
+        Rows = new List<List<TableCell>>
+        {
+            new List<TableCell>
+            {
+                new TableCell { Text = "1" }, new TableCell { Text = "M-001" }, new TableCell { Text = "1" }, new
+                    TableCell { Text = "Dashboard" },
+                new TableCell { Text = "/dashboard" }, new TableCell { Text = "0" }, new TableCell
+                {
+                    Text = "1"
+                },
+                new TableCell { Text = "bi-grid" }, new TableCell { Text = "Ya" }, new TableCell { Text = "_self" }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "2" }, new TableCell { Text = "M-002" }, new TableCell { Text = "2" }, new
+                    TableCell { Text = "Laporan" },
+                new TableCell { Text = "/laporan" }, new TableCell { Text = "M-001" }, new TableCell
+                {
+                    Text = "2"
+                },
+                new TableCell { Text = "bi-file-earmark-text" }, new TableCell { Text = "Ya" }, new TableCell
+                {
+                    Text =
+                        "_self"
+                }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "3" }, new TableCell { Text = "M-003" }, new TableCell { Text = "3" }, new
+                    TableCell { Text = "Monitoring" },
+                new TableCell { Text = "/monitoring" }, new TableCell { Text = "M-001" }, new
+                    TableCell { Text = "2" },
+                new TableCell { Text = "bi-bar-chart" }, new TableCell { Text = "Ya" }, new TableCell
+                {
+                    Text =
+                        "_blank"
+                }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "4" }, new TableCell { Text = "M-004" }, new TableCell { Text = "4" }, new
+                    TableCell { Text = "Administrasi" },
+                new TableCell { Text = "/administrasi" }, new TableCell { Text = "0" }, new
+                    TableCell { Text = "1" },
+                new TableCell { Text = "bi-gear" }, new TableCell { Text = "Ya" }, new TableCell
+                {
+                    Text =
+                        "_self"
+                }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "5" }, new TableCell { Text = "M-005" }, new TableCell { Text = "5" }, new
+                    TableCell { Text = "Master Data" },
+                new TableCell { Text = "/master-data" }, new TableCell { Text = "M-004" }, new
+                    TableCell { Text = "2" },
+                new TableCell { Text = "bi-database" }, new TableCell { Text = "Tidak" }, new TableCell
+                {
+                    Text
+                        = "_self"
+                }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "6" }, new TableCell { Text = "M-006" }, new TableCell { Text = "6" }, new
+                    TableCell { Text = "Pengaturan" },
+                new TableCell { Text = "/pengaturan" }, new TableCell { Text = "M-004" }, new
+                    TableCell { Text = "2" },
+                new TableCell { Text = "bi-sliders" }, new TableCell { Text = "Ya" }, new TableCell
+                {
+                    Text =
+                        "_self"
+                }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "7" }, new TableCell { Text = "M-007" }, new TableCell { Text = "7" }, new
+                    TableCell { Text = "Profil" },
+                new TableCell { Text = "/profil" }, new TableCell { Text = "0" }, new TableCell
+                {
+                    Text =
+                        "1"
+                },
+                new TableCell { Text = "bi-person" }, new TableCell { Text = "Ya" }, new TableCell { Text = "_self" }
+            },
+            new List<TableCell>
+            {
+                new TableCell { Text = "8" }, new TableCell { Text = "M-008" }, new TableCell { Text = "8" }, new
+                    TableCell { Text = "Helpdesk" },
+                new TableCell { Text = "/helpdesk" }, new TableCell { Text = "M-004" }, new TableCell
+                {
+                    Text = "2"
+                },
+                new TableCell { Text = "bi-life-preserver" }, new TableCell { Text = "Tidak" }, new TableCell
+                {
+                    Text =
+                        "_blank"
+                }
+            }
+        }
+    };
+}
+
+<div class="page-header">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 8px;">
+        <div class="row-form">
+            <div class="form-group">
+                <label for="nama_bentuk_gratifikasi">Cari Data<span style="color: #cc0000;">*</span></label>
+                <input type="text" id="nama_bentuk_gratifikasi" name="nama_bentuk_gratifikasi"
+                       placeholder="e.g. Pelapor, Pemberi, Penerimaan, Lampiran">
+            </div>
+            <div class="form-group">
+                <label for="jabatan_bertentangan">Status<span style="color: #cc0000;">*</span></label>
+                <select name="jabatan_bertentangan" id="jabatan_bertentangan" required>
+                    <option value="" disabled selected hidden>Pilih Status</option>
+                    <option value="1">Ya</option>
+                    <option value="0">Tidak</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nama_bentuk_gratifikasi">Tanggal<span style="color: #cc0000;">*</span></label>
+                <input type="date" id="nama_bentuk_gratifikasi" name="nama_bentuk_gratifikasi"
+                       placeholder="e.g. Pemberian Botol Minum">
+            </div>
+            <button class="btn-primary"
+                    style="align-self: flex-end; width: fit-content; height: 46px;">
+                Download
+            </button>
+        </div>
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;s">
+                <h1 class="chart-title">Daftar Laporan yang Telah Dikirimkan</h1>
+                <button class="btn-secondary" style="width: fit-content;">Approve Penerimaan Barang Terpilih</button>
+            </div>
+            <!-- Table -->
+            <partial name="_TableLaporan" model="tableData"/>
+
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <p class="page-info">Showing 1-4 of 4 entries</p>
+                <div>
+                    <button class="page-number">1</button>
+                    <button class="page-number">2</button>
+                    <button class="page-number">···</button>
+                    <button class="page-number">8</button>
+                    <button class="page-number active">9</button>
+                    <button class="page-number">10</button>
+                </div>
+                <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
+                    <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+                    <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+                        <option value="0">10</option>
+                        <option value="1">50</option>
+                        <option value="2">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,14 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+<<<<<<< HEAD
     <TargetFramework>net10.0</TargetFramework>
+=======
+    <TargetFramework>net9.0</TargetFramework>
+>>>>>>> 10faf9b36290da3a6f797fc61fe45b6725d2e295
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>DashboardSipega</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" />
+=======
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
+>>>>>>> 10faf9b36290da3a6f797fc61fe45b6725d2e295
   </ItemGroup>
 
 </Project>

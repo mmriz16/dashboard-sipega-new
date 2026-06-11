@@ -323,7 +323,11 @@
 /* --- Button --- */
 .button-group {
   display: flex;
+<<<<<<< HEAD
   gap: 24px;
+=======
+  gap: 10px;
+>>>>>>> 10faf9b36290da3a6f797fc61fe45b6725d2e295
   justify-content: end;
 }
 
