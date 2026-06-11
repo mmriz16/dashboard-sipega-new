@@ -1,0 +1,131 @@
+@page "/materi-deklarasi"
+@using DashboardSipega.Models
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Materi Deklarasi";
+
+    var tableData = new TableViewModel
+    {
+        Headers = new List<string> { "Urutan", "ID", "Pertanyaan", "Tipe", "Status", "" },
+        Rows = new List<List<TableCell>>
+        {
+            new List<TableCell> {
+                new TableCell { Text = "1" },
+                new TableCell { Text = "Q-001" },
+                new TableCell { Text = "Apakah Anda menerima pemberian dalam bentuk apapun yang berkaitan dengan jabatan Anda?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "2" },
+                new TableCell { Text = "Q-002" },
+                new TableCell { Text = "Apakah Anda memiliki hubungan keluarga sedarah/semenda dengan rekan kerja di satu unit kerja?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "3" },
+                new TableCell { Text = "Q-003" },
+                new TableCell { Text = "Apakah Anda menjalankan usaha/bisnis pribadi yang berpotensi menimbulkan benturan kepentingan?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "4" },
+                new TableCell { Text = "Q-004" },
+                new TableCell { Text = "Apakah Anda merangkap jabatan sebagai pengurus yayasan, koperasi, atau badan usaha lain?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "5" },
+                new TableCell { Text = "Q-005" },
+                new TableCell { Text = "Apakah Anda menggunakan fasilitas dinas untuk kepentingan di luar kedinasan?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Nonaktif", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "6" },
+                new TableCell { Text = "Q-006" },
+                new TableCell { Text = "Apakah Anda menerima honorarium di luar ketentuan yang berlaku dari pihak eksternal?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "7" },
+                new TableCell { Text = "Q-007" },
+                new TableCell { Text = "Apakah Anda memiliki afiliasi dengan vendor penyedia barang/jasa di instansi ini?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "8" },
+                new TableCell { Text = "Q-008" },
+                new TableCell { Text = "Apakah Anda menyimpan informasi rahasia jabatan pada perangkat pribadi non-kantor?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Nonaktif", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "9" },
+                new TableCell { Text = "Q-009" },
+                new TableCell { Text = "Apakah Anda terlibat dalam kegiatan partai politik praktis?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "10" },
+                new TableCell { Text = "Q-010" },
+                new TableCell { Text = "Apakah Anda telah melaporkan seluruh aset dan LHKPN/LHKASN sesuai ketentuan?" },
+                new TableCell { Text = "Pilihan Ganda (Ya/Tidak)" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            }
+        }
+    };
+}
+
+<div class="page-header">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 8px;">
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;s">
+                <h1 class="chart-title">Materi Deklarasi</h1>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-primary" style="width: fit-content;">Hapus Data Terpilih</button>
+                    <button class="btn-secondary" style="width: fit-content;">Tambah Pertanyaan</button>
+                </div>
+            </div>
+            <!-- Table -->
+            <partial name="_TableLaporan" model="tableData" />
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <p class="page-info">Showing 1-4 of 4 entries</p>
+                <div>
+                <button class="page-number">1</button>
+                <button class="page-number">2</button>
+                <button class="page-number">···</button>
+                <button class="page-number">8</button>
+                <button class="page-number active">9</button>
+                <button class="page-number">10</button>
+                </div>
+                <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
+                <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+                <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+                    <option value="0">10</option>
+                    <option value="1">50</option>
+                    <option value="2">100</option>
+                </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

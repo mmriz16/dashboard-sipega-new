@@ -1,0 +1,33 @@
+@page
+@{
+    ViewData["Title"] = "Login Page";
+    ViewData["HideNavbar"] = "true";
+}
+@section Styles {                                                                                                                                                                        
+    <link rel="stylesheet" href="~/css/pages/login.css">
+}
+
+<div class="login">
+    <div class="news">
+        <h1>OJK Raih penghargaan pengendalian gratifikasi terbaik tahun 2016, 2017, 2018, 2020, 2023, dan 2024 dari KPK</h1>
+        <p>Otoritas Jasa Keuangan terus meraih dan mempertahankan penghargaan dari  Komisi Pemberantasan Korupsi (KPK) di bidang sistem pengendalian  gratifikasi terbaik di tahun 2016, 2017, 2018 dan Unit Pengendalian  Gratifikasi terbaik di tahun 2020, 2023, dan 2024 untuk kategori/lembaga nasional.</p>
+    </div>
+    <div class="card-login">
+        <img src="assets/images/logo-ojk.png" style="width: 160px; display: block; margin: 0 auto;" alt="Logo OJK">
+        <div class="title">
+            <h1>Silahkan Masuk ke Akun Anda</h1>
+            <p>Portal Managemen Pengendalian Gratifikasi Terpusat</p>
+        </div>
+        <form action="/dashboard">
+            <div class="form">
+                <label for="uname">Username <span style="color: #cc0000;">*</span></label>
+                <input type="text" id="uname" name="uname" placeholder="e.g. Steve Jobs" required>
+            </div>
+            <div class="form">
+                <label for="pass">Password <span style="color: #cc0000;">*</span></label>
+                <input type="password" id="pass" name="pass" placeholder="Enter your password" required>
+            </div>
+            <input class="btn-primary" type="submit" value="Masuk">
+        </form>
+    </div>
+</div>

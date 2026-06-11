@@ -1,0 +1,57 @@
+@using DashboardSipega.Models
+@model TableViewModel
+
+<div class="table-responsive">
+    <table style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+        <thead>
+            <tr>
+                @if (Model.ShowCheckbox)
+                {
+                    <th style="width: fit-content;">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="select-all" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                    </th>
+                }
+                @foreach (var header in Model.Headers)
+                {
+                    <th>@header</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                <tr>
+                    @if (Model.ShowCheckbox)
+                    {
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox" class="select-item">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                    }
+                    @foreach (var cell in row)
+                    {
+                        @if (cell.Type == "badge")
+                        {
+                            <td class="badge-pill" style="justify-content: center;">
+                                <p class="@cell.BadgeClass">@cell.Text</p>
+                            </td>
+                        }
+                        else if (cell.Type == "action")
+                        {
+                            <td style="text-align: center;">@cell.Text</td>
+                        }
+                        else
+                        {
+                            <td>@cell.Text</td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

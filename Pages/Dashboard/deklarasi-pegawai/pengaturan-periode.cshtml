@@ -1,0 +1,86 @@
+@page "/pengaturan-periode"
+@using DashboardSipega.Models
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Pengaturan Periode";
+
+    var tableData = new TableViewModel
+    {
+        Headers = new List<string> { "Nama Periode Laporan", "Tanggal Mulai", "Tanggal Berakhir", "Status", "" },
+        Rows = new List<List<TableCell>>
+        {
+            new List<TableCell> {
+                new TableCell { Text = "Periode Semester I 2026" },
+                new TableCell { Text = "Jan 01, 2026" },
+                new TableCell { Text = "Jun 30, 2026" },
+                new TableCell { Type = "badge", Text = "Aktif", BadgeClass = "verified" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Periode Semester II 2025" },
+                new TableCell { Text = "Jul 01, 2025" },
+                new TableCell { Text = "Dec 31, 2025" },
+                new TableCell { Type = "badge", Text = "Selesai", BadgeClass = "draft" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Periode Semester I 2025" },
+                new TableCell { Text = "Jan 01, 2025" },
+                new TableCell { Text = "Jun 30, 2025" },
+                new TableCell { Type = "badge", Text = "Selesai", BadgeClass = "draft" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Periode Tahunan 2024" },
+                new TableCell { Text = "Jan 01, 2024" },
+                new TableCell { Text = "Dec 31, 2024" },
+                new TableCell { Type = "badge", Text = "Nonaktif", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            },
+            new List<TableCell> {
+                new TableCell { Text = "Periode Uji Coba Kepatuhan" },
+                new TableCell { Text = "Nov 01, 2023" },
+                new TableCell { Text = "Nov 15, 2023" },
+                new TableCell { Type = "badge", Text = "Nonaktif", BadgeClass = "rejected" },
+                new TableCell { Type = "action", Text = "1" }
+            }
+        }
+    };
+}
+
+<div class="page-header">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 8px;">
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center;s">
+                <h1 class="chart-title">Data Deklarasi</h1>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-primary" style="width: fit-content;">Hapus Data Terpilih</button>
+                    <button class="btn-secondary" style="width: fit-content;">Tambah Periode</button>
+                </div>
+            </div>
+            <!-- Table -->
+            <partial name="_TableLaporan" model="tableData" />
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <p class="page-info">Showing 1-4 of 4 entries</p>
+                <div>
+                <button class="page-number">1</button>
+                <button class="page-number">2</button>
+                <button class="page-number">···</button>
+                <button class="page-number">8</button>
+                <button class="page-number active">9</button>
+                <button class="page-number">10</button>
+                </div>
+                <div class="form-group" style="width: fit-content; flex-direction: row; gap: 8px; align-items: center;">
+                <label for="periode" style="width: fit-content; height: fit-content;">Lines per Page</label>
+                <select id="kategori_gratifikasi" name="kategori_gratifikasi" required>
+                    <option value="0">10</option>
+                    <option value="1">50</option>
+                    <option value="2">100</option>
+                </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

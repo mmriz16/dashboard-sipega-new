@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@ViewData["Title"] - Dashboard SiPega</title>
+
+  @* Styles *@
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/layout.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+
+@if (ViewData["HideNavbar"] == null) {                                                                                                                                                                                        
+  <nav class="navbar">
+    <div class="container">
+      <a href="/">
+        <img style="width: 134px;" src="assets/images/logo-ojk.png" alt="Logo OJK">
+      </a>
+      <a class="navbar-brand">Sistem Pengendalian Sistem Informasi</a>
+      <ul class="navbar-links">
+        <li><a class="btn-primary" asp-page="/Login">Masuk</a></li>
+      </ul>
+    </div>
+  </nav>
+}
+
+  <main class="main-content">
+    <div class="container">
+      @RenderBody()
+    </div>
+  </main>
+
+  @* <footer class="footer">
+    <div class="container">
+      <p>&copy; @DateTime.Now.Year - Dashboard SiPega</p>
+    </div>
+  </footer> *@
+
+  <script src="~/js/app.js"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
